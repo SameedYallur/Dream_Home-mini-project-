@@ -4,7 +4,7 @@ use dreamhome;
 DROP DATABASE dreamhome;
 
 create table staff(
-	staff_no varchar(5) not null unique,
+	staff_no varchar(5) PRIMARY KEY,
     fname varchar(15),
     lname varchar(15), 
     sex char(1),
@@ -14,8 +14,7 @@ create table staff(
     salary numeric(6),
     supervisor_no varchar(3),
     manager_date date,
-    manager_bonus numeric(5),
-    primary key (staff_no)
+    manager_bonus numeric(5)
 );
 
 create table BRANCH(
@@ -60,7 +59,7 @@ create table client(
 );
 
 CREATE TABLE Registration (
-   clientNo varchar(255) NOT NULL PRIMARY KEY,
+   clientNo varchar(255) PRIMARY KEY,
    branchNo varchar(255) ,
    staffNo varchar(255) ,
    dateJoined date 
