@@ -1,6 +1,8 @@
 create database dreamhome;
 use dreamhome;
 
+DROP DATABASE dreamhome;
+
 create table staff(
 	staff_no varchar(5) not null unique,
     fname varchar(15),
@@ -21,7 +23,7 @@ branch_no varchar (4),
 street varchar(50),
 city varchar(15),
 postcode varchar(7),
-telephonr varchar(10)
+telephone varchar(10)
 );
 
 create table PrivateOwner(
@@ -31,7 +33,7 @@ create table PrivateOwner(
     address varchar(50),
     telNo char(15),
     eMail varchar(30),
-    passward varchar(40)
+    `password` varchar(40)
 );
 
 create table propertyForRent
