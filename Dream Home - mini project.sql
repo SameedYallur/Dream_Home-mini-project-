@@ -1,20 +1,19 @@
+show databases;
 create database dreamhome;
 use dreamhome;
 
-DROP DATABASE dreamhome;
-
 create table staff(
-	staff_no varchar(5) PRIMARY KEY,
+	staff_no varchar(5),
     fname varchar(15),
     lname varchar(15), 
     sex char(1),
     dob date,
     branch_no char(4),
-    pos varchar(10),
+    pos varchar(20),
     salary numeric(6),
-    supervisor_no varchar(3),
+    supervisor_no varchar(5),
     manager_date date,
-    manager_bonus numeric(5)
+    manager_bonus numeric(6)
 );
 
 create table BRANCH(
@@ -36,7 +35,7 @@ create table PrivateOwner(
 );
 
 create table propertyForRent
-(propertyNo char(5) PRIMARY KEY,
+(propertyNo char(5),
  street varchar(35),
  city varchar(20), -- change
  postcode varchar(10),
@@ -48,7 +47,7 @@ create table propertyForRent
  branchNo char(5)
 );
 
-create table client(
+create table `client`(
 	clientNo char(5),
 	firstName varchar(256),
 	LastName varchar(256),
@@ -59,7 +58,7 @@ create table client(
 );
 
 CREATE TABLE Registration (
-   clientNo varchar(255) PRIMARY KEY,
+   clientNo varchar(255) ,
    branchNo varchar(255) ,
    staffNo varchar(255) ,
    dateJoined date 
@@ -74,7 +73,7 @@ VALUES
 ('B004', '321 Pine St', 'Miami', '33101', '555-3456'),
 ('B005', '654 Maple St', 'Dallas', '75201', '555-7890');
 
-INSERT INTO client (clientNo, firstName, lastName, telNo, prefType, maxRent, email)
+INSERT INTO `client` (clientNo, firstName, lastName, telNo, prefType, maxRent, email)
 VALUES
 ('C001', 'John', 'Doe', '555-1234', 'Apartment', 2000, 'johndoe@email.com'),
 ('C002', 'Jane', 'Smith', '555-5678', 'House', 3000, 'janesmith@email.com'),
@@ -95,7 +94,9 @@ VALUES
 ('C017', 'Tyler', 'Wilson', '555-6789', 'Apartment', 2200, 'tylerwilson@email.com'),
 ('C018', 'Samantha', 'Anderson', '555-0123', 'House', 3400, 'samanthaanderson@email.com');
 
-INSERT INTO propertyForRent (propertyNo, street, city, postcode, type, rooms, rent, ownerNo, staffNo, branchNo)
+
+
+INSERT INTO propertyForRent (propertyNo, street, city, postcode, `type`, rooms, rent, ownerNo, staffNo, branchNo)
 VALUES
 ('P001', '1111 Main St', 'New York', '10001', 'Apartment', 2, 1500, 'O001', 'S001', 'B001'),
 ('P002', '2222 Elm St', 'Los Angeles', '90001', 'House', 3, 2500, 'O002', 'S002', 'B002'),
@@ -122,48 +123,57 @@ VALUES
 ('S010', 'Samantha', 'Rodriguez', 'F', '1992-08-27', 'B005', 'Salesperson', 27000, 'S009', '2023-03-15', 1500),
 ('S011', 'Ryan', 'Kim', 'M', '1990-04-23', 'B001', 'Salesperson', 29000, 'S001', '2022-06-01', 1000),
 ('S012', 'Ashley', 'Chang', 'F', '1995-12-18', 'B002', 'Salesperson', 31000, 'S003', '2021-10-15', 1200),
-('S013', 'Daniel', 'Park', 'M', '1988-02-07', 'B003', 'Salesperson', 30000, 'S005', '2023-02-20', 2000),
+('S013', 'Daniel', 'Park' , 'M', '1988-02-07', 'B003', 'Salesperson', 30000, 'S005', '2023-02-20', 2000),
 ('S014', 'Olivia', 'Nguyen', 'F', '1994-07-28', 'B004', 'Salesperson', 34000, 'S007', '2022-11-01', 2200),
-('S015', 'Michael', 'Rodriguez', 'M', '1987-10-11', 'B005', 'Salesperson', 26000, 'S009', '2023-04-01', 1800);
+('S015', 'Michael', 'Rodriguez', 'M', '1987-10-11', 'B005', 'Salesperson', 26000, 'S009', '23-04-01', 1800);
 
 -- Inserting data into PrivateOwner table
 INSERT INTO PrivateOwner (OwnerNo, fName, lName, address, telNo, eMail, `password`)
-VALUES ('O001', 'Alice', 'Jones', '456 Oak St', '555-4321', 'alice@example.com', 'mypassword'),
-       ('O002', 'Bob', 'Smith', '789 Maple St', '555-5678', 'bob@example.com', 'mypassword'),
-       ('O003', 'Charlie', 'Brown', '1010 Elm St', '555-9101', 'charlie@example.com', 'mypassword'),
-       ('O004', 'David', 'Wilson', '1212 Pine St', '555-1212', 'david@example.com', 'mypassword'),
-       ('O005', 'Emma', 'Thomas', '1414 Oak St', '555-1515', 'emma@example.com', 'mypassword');
-       
-       -- Inserting data into PrivateOwner table
-INSERT INTO PrivateOwner (OwnerNo, fName, lName, address, telNo, eMail, `password`)
-VALUES ('O001', 'Alice', 'Jones', '456 Oak St', '555-4321', 'alice@example.com', 'mypassword'),
-       ('O002', 'Bob', 'Smith', '789 Maple St', '555-5678', 'bob@example.com', 'mypassword'),
-       ('O003', 'Charlie', 'Brown', '1010 Elm St', '555-9101', 'charlie@example.com', 'mypassword'),
-       ('O004', 'David', 'Wilson', '1212 Pine St', '555-1212', 'david@example.com', 'mypassword'),
-       ('O005', 'Emma', 'Thomas', '1414 Oak St', '555-1515', 'emma@example.com', 'mypassword');
+VALUES 
+('O001', 'Alice', 'Jones', '456 Oak St', '555-4321', 'alice@example.com', 'mypassword'),
+('O002', 'Bob', 'Smith', '789 Maple St', '555-5678', 'bob@example.com', 'mypassword'),
+('O003', 'Charlie', 'Brown', '1010 Elm St', '555-9101', 'charlie@example.com', 'mypassword'),
+('O004', 'David', 'Wilson', '1212 Pine St', '555-1212', 'david@example.com', 'mypassword'),
+('O005', 'Emma', 'Thomas', '1414 Oak St', '555-1515', 'emma@example.com', 'mypassword'),
+('O006', 'Frank', 'Johnson', '1616 Elm St', '555-1616', 'frank@example.com', 'mypassword'),
+('O007', 'Grace', 'Lee', '1818 Maple St', '555-1818', 'grace@example.com', 'mypassword'),
+('O008', 'Henry', 'Davis', '2020 Pine St', '555-2020', 'henry@example.com', 'mypassword'),
+('O009', 'Isabella', 'Martin', '2222 Oak St', '555-2222', 'isabella@example.com', 'mypassword'),
+('O010', 'Jacob', 'Garcia', '2424 Elm St', '555-2424', 'jacob@example.com', 'mypassword');
+
        
 INSERT INTO Registration (clientNo, branchNo, staffNo, dateJoined)
-VALUES ('C001', 'B001', 'S001', '2022-01-01'),
+VALUES 
+('C001', 'B001', 'S001', '2022-01-01'),
 ('C002', 'B002', 'S002', '2022-02-01'),
 ('C003', 'B002', 'S002', '2022-02-15'),
 ('C004', 'B001', 'S001', '2022-03-01'),
 ('C005', 'B003', 'S003', '2022-03-15');
 
-INSERT INTO client (clientNo, firstName, lastName, telNo, prefType, maxRent, email)
-VALUES ('C001', 'John', 'Doe', '555-1234', 'Apartment', 2000, 'john.doe@example.com'),
-('C002', 'Jane', 'Smith', '555-5678', 'House', 3500, 'jane.smith@example.com'),
-('C003', 'Bob', 'Johnson', '555-9012', 'Condo', 1800, 'bob.johnson@example.com'),
-('C004', 'Emily', 'Davis', '555-3456', 'Apartment', 2500, 'emily.davis@example.com'),
-('C005', 'Mike', 'Wilson', '555-7890', 'House', 4000, 'mike.wilson@example.com');
 
--- Inserting data into propertyForRent table
-INSERT INTO propertyForRent (propertyNo, street, city, postcode, `type`, rooms, rent, ownerNo, staffNo, branchNo)
-VALUES ('P001', '456 Main St', 'New York', '10001', 'Apartment', 2, 2000, 'O001', 'S001', 'B001'),
-       ('P002', '789 Elm St', 'Los Angeles', '90001', 'House', 3, 3000, 'O002', 'S003', 'B002'),
-       ('P003', '1010 Oak St', 'Chicago', '60601', 'Condo', 1, 1500, 'O003', 'S002', 'B002'),
-	   ('P004', '1234 Elm St', 'New York', '10001', 'Apartment', 2, 2000, 'O004', 'S001', 'B001'),
-	   ('P005', '5678 Maple Ave', 'Los Angeles', '90001', 'House', 3, 3000, 'O005', 'S003', 'B003'),
-	   ('P006', '9012 Pine St', 'San Francisco', '94101', 'Condo', 1, 1800, 'O003', 'S002', 'B002'),
-	   ('P007', '3456 Cedar Dr', 'Seattle', '98101', 'Apartment', 2, 2200, 'O004', 'S001', 'B001'),
-	   ('P008', '7890 Birch Rd', 'Denver', '80201', 'House', 4, 4000, 'O005', 'S003', 'B003');
-       
+-- adding constraints
+
+Alter table branch add primary key (branch_no); 
+
+Alter table `client` add primary key (clientNo);
+
+Alter table PrivateOwner add primary key (OwnerNo); 
+
+Alter table propertyForRent add primary key (propertyNo); 
+
+Alter table staff add primary key (staff_no); 
+
+Alter table propertyForRent add foreign key (branchNo) references branch(branch_no);
+
+Alter table propertyForRent add foreign key (ownerNo) references PrivateOwner(OwnerNo); 
+
+Alter table propertyForRent add foreign key (staffNo) references staff(staff_no);
+
+Alter table Registration add foreign key (branchNo) references branch(branch_no);
+
+Alter table Registration add foreign key (ClientNo) references `client`(clientNo);
+
+Alter table Registration add foreign key (staffNo) references staff(staff_no);
+
+Alter table staff add foreign key (branch_no) references branch(branch_no);
+
